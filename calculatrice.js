@@ -32,3 +32,20 @@ buttonClear.addEventListener('click', () => {
     result = "";
 });
 
+operatorButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        if (display.textContent === '0') return;
+        if (display.textContent.endsWith('+')) return
+        else if (display.textContent.endsWith('-')) return;
+        else if (display.textContent.endsWith('*')) return;
+        else if (display.textContent.endsWith('÷')) return;
+        const displayValue = btn.dataset.operator;
+        if (display.textContent === '0') {
+            display.textContent = displayValue;
+        } else {
+            display.textContent += displayValue;
+        }
+    });
+});
+
+
