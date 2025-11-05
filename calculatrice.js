@@ -48,4 +48,35 @@ operatorButtons.forEach(btn => {
     });
 });
 
+function calculate(){
+    equalsButton.addEventListener('click', () => {
+        operator = display.textContent.includes('+') ? '+' :
+                   display.textContent.includes('-') ? '-' :
+                   display.textContent.includes('*') ? '*' :
+                   display.textContent.includes('/') ? '/' : '';
+        number1 = display.textContent.split(operator)[0];
+        number2 = display.textContent.split(operator)[1];
+        switch (operator) {
+            case '+':
+                result = parseFloat(number1) + parseFloat(number2);
+                break;
+            case '-':
+                result = parseFloat(number1) - parseFloat(number2);
+                break;
+            case '*':
+                result = parseFloat(number1) * parseFloat(number2);
+                break;
+            case '/':
+                if (number2 == 0){
+                    result = 'Erreur';
+                } else {
+                    result = parseFloat(number1) / parseFloat(number2);
+                }
+                break;
+        }
+    display.textContent = result;
+})
+}
+
+calculate();
 
