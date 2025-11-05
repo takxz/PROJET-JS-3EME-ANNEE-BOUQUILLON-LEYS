@@ -39,7 +39,11 @@ operatorButtons.forEach(btn => {
         else if (display.textContent.endsWith('-')) return;
         else if (display.textContent.endsWith('*')) return;
         else if (display.textContent.endsWith('÷')) return;
-        const displayValue = btn.dataset.operator;
+        if (display.textContent.includes('+') ||
+            display.textContent.includes('-') ||
+            display.textContent.includes('*') ||
+            display.textContent.includes('/')) { return; }
+        let displayValue = btn.dataset.operator;
         if (display.textContent === '0') {
             display.textContent = displayValue;
         } else {
@@ -78,5 +82,14 @@ function calculate(){
 })
 }
 
+function enableKeyToClickMapping() {
+    document.addEventListener('keydown', (event) => {
+        if (event.key === '=' || event.key === 'Enter') {
+            equalsButton.click(); // 🔥 triggers the same logic as a real click
+        }
+    });
+}
+
 calculate();
+enableKeyToClickMapping();
 
