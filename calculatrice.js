@@ -10,28 +10,28 @@ let operator = "";
 let result = "";
 
 function updateDisplay(){
-    
+    displayNumbers();
+    displayOperator();
+    operatorRules();
 }
-
+function displayNumbers(){
 numberButtons.forEach(btn => {
     btn.addEventListener('click', () => {
         const displayValue = btn.dataset.number;
-        if (display.textContent === '0') {
-            display.textContent = displayValue;
-        } else {
-            display.textContent += displayValue;
-        }
+        display.textContent += displayValue;
     });
-});
+})};
 
+function displayOperator(){
 buttonClear.addEventListener('click', () => {
     display.textContent = '0';
     number1 = "";
     number2 = "";
     operator = "";
     result = "";
-});
+})};
 
+function operatorRules(){
 operatorButtons.forEach(btn => {
     btn.addEventListener('click', () => {
         if (display.textContent === '0') return;
@@ -50,7 +50,7 @@ operatorButtons.forEach(btn => {
             display.textContent += displayValue;
         }
     });
-});
+})};
 
 function calculate(){
     equalsButton.addEventListener('click', () => {
@@ -82,13 +82,6 @@ function calculate(){
 })
 }
 
-function enableKeyToClickMapping() {
-    document.addEventListener('keydown', (event) => {
-        if (event.key === '=' || event.key === 'Enter') {
-            equalsButton.click(); // 🔥 triggers the same logic as a real click
-        }
-    });
-}
 
 calculate();
 enableKeyToClickMapping();
